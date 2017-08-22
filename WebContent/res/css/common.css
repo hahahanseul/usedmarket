@@ -1,0 +1,7 @@
+@charset "UTF-8";
+html,body{width:100%; height:100%;}
+table{border-collapse: collapse;}
+#board{border:1px solid black; width:80%; margin:0 auto;}
+#board th{border:1px solid black; }
+#board tr td{border:1px solid black; width:30px;}
+#board tr th{text-align:center;}
