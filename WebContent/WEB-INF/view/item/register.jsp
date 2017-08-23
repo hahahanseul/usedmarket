@@ -8,48 +8,49 @@
 <style>
 html,body{width:100%; height:100%;}
 #wrapper{width:100%;}
-#container{width:100%;}
-table{border-collapse: collapse;}
-#detail{border:1px solid black; width:60%; height:300px;margin:0 auto;}
-#detail th{border:1px solid black; }
-#detail tr td{border:1px solid black; text-align:center;}
+#container{padding: 30px 0px;}
+#register_form{width:30%; margin:0 auto;}
 #btn_box{width:310px;height:50px;margin: 0 auto;}
-.register_btn{width:45%; height:30px; margin-top:20px; margin-right:5px;}
+span{width: 150px;}
+.register_btn{width:150px; height:30px; margin-top:20px; margin-right:5px;}
 h1{text-align:center;}
 </style>
 <body>
 <div id=wrapper>
 <h1>상품등록</h1>
     <div id=container>
-   	<table id="detail">
-   		<tr>
-   			<td rowspan="4" style="width:40%;"></td>
-   			<td style="width:10%;">title</td>
-   			<td style="width:50%%;"></td>
-   		</tr>
-   		<tr>
-   			<td>writer</td>
-   			<td></td>
-   		</tr>
-   		<tr>
-   			<td>regdate</td>
-   			<td></td>
-   		</tr>
-   		<tr>
-   			<td>content</td>
-   			<td></td>
-   		</tr>
-   	</table>
-   	<div id="btn_box">
-   	    <input class="register_btn" onclick="move('move','common','list')" type="button" value="리스트로"/>
-   	    <input class="register_btn" onclick="move('move','item','register')" type="button" value="상품등록"/>
-   	</div>
+   	<form id="register_form">
+   		<span>TITLE</span><input type="text" id="title" name="title"/><br />
+   		<span>WRITER</span><input type="text" id="writer" name="writer"/><br />
+   		<span>CONTENT</span><input type="text" id="content" name="content"/><br />
+   		<input class="register_btn" onclick="register()" type="submit" value="상품추가"/>
+   		<input type="hidden" name="cmd" value="register" />
+   		<input type="hidden" name="dir" value="common" />
+   		<input type="hidden" name="page" value="list" />
+   	</form>
     </div>
 </div>
 </body>
 <script>
-function move(cmd,dir,page){
-	location.href="${ctx}/item.action?cmd="+cmd+"&dir="+dir+"&page="+page;
+function register(){
+	var input_title=document.getElementById('title').value;
+	var input_writer=document.getElementById('writer').value;
+	var input_content=document.getElementById('content').value;
+	if(input_title==""){
+		alert('제목을 입력해주세요');
+		return false;
+	}
+	if(input_writer==""){
+		alert('작성자명을 입력해주세요');
+		return false;
+	}
+	if(input_content==""){
+		alert('내용을 입력해주세요');
+		return false;
+	}
+	var form = document.getElementById('register_form');
+	form.action = "${ctx}/item.action";
+	return true;
 }
 </script>
 </html>

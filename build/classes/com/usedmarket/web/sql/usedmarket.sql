@@ -14,7 +14,9 @@ CREATE TABLE Item (
 	PRIMARY KEY(item_seq)
 );
 
-SELECT count(*) FROM Item;
+SELECT COUNT(*) AS count FROM Item;
+
+SELECT * FROM Item;
 DROP TABLE Item;
 
 INSERT INTO Item(item_seq,title, writer, photo, content, regdate)

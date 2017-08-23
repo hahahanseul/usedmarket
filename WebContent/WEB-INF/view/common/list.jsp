@@ -17,6 +17,9 @@ table{border-collapse: collapse;}
 <body>
 <div id=wrapper>
 <div id=container>
+<div>
+	<h3>총 아이템 수:${requestScope.count}</h3>
+</div>
 <table id="board">
 	<tr style="border:1px solid black;">
 		<th style="width: 50px;">글번호</th>
