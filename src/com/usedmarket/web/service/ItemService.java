@@ -6,9 +6,9 @@ import com.usedmarket.web.domain.ItemBean;
 
 public interface ItemService {
 	public String addItem(ItemBean item);
+	public List<ItemBean> getList(String[] rows);
+	public List<ItemBean> findByName(String name);
 	public ItemBean findBySeq(String seq);
-	public List<?> findByName(String name);
-	public List<?> getList(Object o);
 	public String countItems();
 	public String modify(ItemBean item);
 	public String remove(String seq);

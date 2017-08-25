@@ -67,3 +67,27 @@ VALUES (item_seq.nextval, '소파', '김욕창', 'item.jpg', '일어나기 싫�
 INSERT INTO Item(item_seq,title, writer, photo, content, regdate)
 VALUES (item_seq.nextval, 'TV', '드라마퀸', 'item.jpg', '드라마는 큰 티비로 봐야 제맛이죠',SYSDATE);
 
+
+SELECT t2.*
+FROM(SELECT rownum rnum, t.*
+FROM(SELECT i.* FROM ITEM i ORDER BY rownum desc) t)t2
+WHERE t2.rnum between 6 and 10;
+
+
+
+
+
+
+SELECT i.* FROM ITEM i ORDER BY rownum desc;
+
+
+
+
+
+
+
+
+
+
+
+

@@ -23,6 +23,11 @@ h1{text-align:center;}
    		<span>TITLE</span><input type="text" id="title" name="title"/><br />
    		<span>WRITER</span><input type="text" id="writer" name="writer"/><br />
    		<span>CONTENT</span><input type="text" id="content" name="content"/><br />
+		<span>CATEGORY</span>
+		<input type="checkbox" name="category" value="used" checked/>중고<br>
+		<input type="checkbox" name="category" value="elec" />전자제품<br>
+		<input type="checkbox" name="category" value="book"/>도서<br>
+		<input type="checkbox" name="category" value="clothes"/>의류<br>
    		<input class="register_btn" onclick="register()" type="submit" value="상품추가"/>
    		<input type="hidden" name="cmd" value="register" />
    		<input type="hidden" name="dir" value="common" />

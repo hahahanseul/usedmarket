@@ -5,9 +5,11 @@ import com.usedmarket.web.dao.ItemDAOImpl;
 import com.usedmarket.web.domain.ItemBean;
 
 public class ItemServiceImpl implements ItemService {
-	public static ItemServiceImpl getInstance() {return new ItemServiceImpl();}
-	private ItemServiceImpl() {}
-
+	public static ItemServiceImpl getInstance() {
+		return new ItemServiceImpl();
+	}
+	private ItemServiceImpl() {	}
+	
 	@Override
 	public String addItem(ItemBean item) {
 		return ItemDAOImpl.getInstance().insertItem(item);
@@ -19,13 +21,13 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public List<?> findByName(String name) {
+	public List<ItemBean> findByName(String name) {
 		return ItemDAOImpl.getInstance().selectByName(name);
 	}
 
 	@Override
-	public List<?> getList(Object o) {
-		return null;
+	public List<ItemBean> getList(String[] rows) {
+		return ItemDAOImpl.getInstance().selectAll(rows);
 	}
 
 	@Override

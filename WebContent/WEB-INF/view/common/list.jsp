@@ -23,20 +23,37 @@ table{border-collapse: collapse;}
 <table id="board">
 	<tr style="border:1px solid black;">
 		<th style="width: 50px;">글번호</th>
-		<th>제목</th>
+		<th>제목2</th>
 		<th>작성자</th>
 		<th>작성일</th>
 		<th>수정/삭제</th>
 	</tr>
-	<tr style="border:1px solid black;">
-		<td>1</td>
-		<td><a onclick="move('move','item','detail')">빨간구두</a></td>
-		<td>안데르센</td>
-		<td></td>
-		<td>
-		<a onclick="move('move','item','update')">수정</a>
-		/
-		<a onclick="move('move','common','list')">삭제</a>
+	<c:forEach var="i" items="${requestScope.list}">
+		<tr style="border:1px solid black;">
+			<td>${i.itemSeq}</td>
+			<td><a onclick="move('move','item','detail')">${i.title}</a></td>
+			<td>${i.writer}</td>
+			<td>${i.regdate}</td>
+			<td>
+			<a onclick="move('move','item','update')">수정</a>
+			/
+			<a onclick="move('move','common','list')">삭제</a>
+			</td>
+		</tr>
+	</c:forEach>
+	<tr>
+		<td colspan="5">
+		<div style="width:100%; margin:0 auto;">
+		<c:if test="${requestScope.prevBlock gt 0}">
+			<span><a onclick="list('${requestScope.startPage-1}')">◀</a></span>
+		</c:if>
+		<c:forEach varStatus="i" begin="${requestScope.startPage}" end="${requestScope.endPage}" step="1">
+		<a class="active" onclick="list('${i.index}')">${i.index}</a> &nbsp;&nbsp;&nbsp;
+		</c:forEach>
+			<c:if test="${requestScope.nextBlock le requestScope.theNumberOfPages}">
+				<span><a onclick="list('${requestScope.endPage+1}')">▶</a></span>	
+			</c:if>
+		</div>
 		</td>
 	</tr>
 	<tr>
@@ -49,6 +66,10 @@ table{border-collapse: collapse;}
 <script>
 function move(cmd,dir,page){
 	location.href="${ctx}/item.action?cmd="+cmd+"&dir="+dir+"&page="+page;
+}
+function list(pageNumber) {
+	location.href="${ctx}/item.action?cmd=list&dir=common&page=list&pageNumber=" +pageNumber;
+	
 }
 </script>
 </html>
