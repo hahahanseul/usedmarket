@@ -2,5 +2,5 @@
 <img src="${img}/loading.gif" alt="" />
 <script>
 alert('Start');
-location.href="${ctx}/item.action?cmd=list&dir=common&page=list&pageNumber=1";
+location.href="${ctx}/common.action?cmd=move&page=list&pageNumber=1";
 </script>

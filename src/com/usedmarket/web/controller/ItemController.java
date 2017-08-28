@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.usedmarket.web.constants.Action;
 import com.usedmarket.web.domain.ItemBean;
 import com.usedmarket.web.service.ItemService;
 import com.usedmarket.web.service.ItemServiceImpl;
@@ -29,12 +30,11 @@ public class ItemController extends HttpServlet {
 		String count=service.countItems();
 		request.setAttribute("count", count);
 		switch(cmd) {
-		case "move":
+		case Action.MOVE:
 			request.getRequestDispatcher("/WEB-INF/view/" +dir +"/" + page +".jsp").forward(request,response);
 			break;
-		case "register":
+		case Action.REGISTER:
 			ItemBean item = new ItemBean();
-			String[] category = request.getParameterValues("category");
  			item.setTitle(request.getParameter("title"));
 			item.setWriter(request.getParameter("writer"));
 			item.setContent(request.getParameter("content"));
@@ -62,7 +62,7 @@ public class ItemController extends HttpServlet {
 			}
 			response.sendRedirect(request.getContextPath()+"/item.action?cmd=move&dir=common&page=list");
 			break;
-		case "list":
+		case Action.LIST:
 			int pageSize = 5;
 			int blockSize = 5;
 			String theNumberOfRows = service.countItems();
@@ -93,7 +93,7 @@ public class ItemController extends HttpServlet {
 			System.out.println("blockNumber:::" + blockNumber);
 			System.out.println("=====================================");
 			break;
-		case "delete":
+		case Action.DELETE:
 			request.getRequestDispatcher("/WEB-INF/view/" +dir +"/" + page +".jsp").forward(request,response);
 			break;	
 		}
